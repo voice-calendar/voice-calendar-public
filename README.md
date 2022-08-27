@@ -37,7 +37,7 @@ pip3 install Django==4.0.6
 
 7. Copy the contents of production.py to a file called development.py in the same folder. Generate a Django secret key and place it in the slot in development.py (where it says `os.environ['SECRET_KEY']`). Change `DEBUG` to `True` for testing purposes. 
 
-8. Set up a Google Calendar API on Google Cloud. Download the OAuth id as a JSON. In views.py, update `JSON_FILEPATH` to the path to this JSON file. 
+8. Set up a Google Calendar API on Google Cloud. Download the OAuth ID as a JSON. In views.py, update `JSON_FILEPATH` to the path to this JSON file. 
 
 9. To check if it is working so far, `cd` to the repository folder and do `python3 manage.py runserver`. If there are no errors and you can see the website at http://127.0.0.1:8000/, it is working so far. 
 
