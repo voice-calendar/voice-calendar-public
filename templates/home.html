@@ -8,11 +8,16 @@
 {% block content %}
   <h1>Welcome to Acsent Calendar</h1>
   <h6>Create Calendar Events Easily!</h6>
-  <a class="btn btn-primary mb-4 mt-2" href="{% url 'events' %}" role="button">Go to Acsent Calendar</a>
+    <a class="btn btn-primary mb-4 mt-2" href="{% url 'events' %}" role="button">Go to Acsent Calendar</a>
+  <h3>Google Sign-in Instructions</h3>
+    <p>The first time you use Acsent Calendar, you must sign in to Google.</p>
+    <p>Please use username <strong>acsent.testing</strong> and password <strong>Testing123!</strong>.</p>
+    <p>The Google Calendar API is in test mode as of now, so only certain users can log in. </p>
   <h3>About</h3>
-  <p>Do you find it a hassle to create calendar events? Acsent Calendar can help. Using just your voice, you can easily add events to your Google Calendar!</p>
+    <p>Do you find it a hassle to create calendar events? Acsent Calendar can help. Using just your voice, you can easily add events to your Google Calendar!</p>
+    <p><a href="https://github.com/voice-calendar/voice-calendar-public">Link to source code</a></p>
   <h5>Creators</h5>
-  <p>Acsent Calendar is created by Sophia Zhu and Elaine Lu, aka Team Acsent.</p>
+    <p>Acsent Calendar is created by Sophia Zhu and Elaine Lu, aka Team Acsent.</p>
 {% endblock %}
 
 {% block script %}
