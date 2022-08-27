@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Events - {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item active" aria-current="page">Events</li>
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="mb-4">Upcoming Events
+    <a class="btn btn-primary float-right" href="{% url 'new_event' %}" role="button">New Event</a>
+  </h1>
+
+  {% if not days%}
+    <p>No upcoming events found.</p>
+  {% endif %}
+
+
+  {% for day, eventList in days %}
+    <ul class="list-group mb-3">
+      <li class="list-group-item list-group-item-dark">
+        <h5 class="mb-0">{{ day }}</h5>
+      </li>
+      {% for event in eventList %}
+        <li class="list-group-item">
+          {% if event.startTime %}
+            <p><small>{{ event.startTime }} - {{ event.endTime }}</small></p>
+          {% else %}
+            <p>all-day</p>
+          {% endif %}
+          {{ event.summary }}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endfor %}
+
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript">
+    alanBtnInstance.setVisualState({screen: "events"});
+  </script>
+{% endblock %}

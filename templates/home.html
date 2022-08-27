@@ -1,0 +1,22 @@
+
+{% extends 'base.html' %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item active" aria-current="page">Home</li>
+{% endblock %}
+
+{% block content %}
+  <h1>Welcome to Acsent Calendar</h1>
+  <h6>Create Calendar Events Easily!</h6>
+  <a class="btn btn-primary mb-4 mt-2" href="{% url 'events' %}" role="button">Go to Acsent Calendar</a>
+  <h3>About</h3>
+  <p>Do you find it a hassle to create calendar events? Acsent Calendar can help. Using just your voice, you can easily add events to your Google Calendar!</p>
+  <h5>Creators</h5>
+  <p>Acsent Calendar is created by Sophia Zhu and Elaine Lu, aka Team Acsent.</p>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript">
+    alanBtnInstance.setVisualState({screen: "home"});
+  </script>
+{% endblock %}

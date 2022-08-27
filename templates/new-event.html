@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% load widget_tweaks %}
+
+{% block title %}
+  New Event - {{ block.super }}
+{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+  <li class="breadcrumb-item"><a href="{% url 'events' %}">Events</a></li>
+  <li class="breadcrumb-item active" aria-current="page">New Event</li>
+{% endblock %}
+
+{% block content %}
+
+<h2>Create New Event</h2>
+    <div class="my-3">
+      <h5>
+        <a class="btn btn-primary" data-toggle="collapse" href="#voiceInstructions" role="button" aria-expanded="false" aria-controls="voiceInstructions">
+          View voice instructions
+        </a>
+      </h5>
+    <div class="collapse" id="voiceInstructions">
+      <div class="card card-body">
+        <ol>
+          <li>Click the blue button in the lower right corner to start the microphone.</li>
+          <li>Say the field's name and its value. For example, "The Title is My Event."</li>
+          <li>If a field is active, you don't need to say the field's name, only its value.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+
+  <form method="post" novalidate>
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
+    <div class="row">
+      <div class="col">
+        <div class="form-row">
+          <div class="form-group col">
+            {{ form.title.label_tag }}
+            {% render_field form.title class="form-control" %}
+            {{ form.title.errors }}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            {{ form.start.label_tag }}
+            {% render_field form.start class="form-control" %}
+            {{ form.start.errors }}
+          </div>
+          <div class="form-group col">
+            {{ form.end.label_tag }}
+            {% render_field form.end class="form-control" %}
+            {{ form.end.errors }}
+          </div>
+          <div class="form-group col">
+            {{ form.tz.label_tag }}
+            {% render_field form.tz class="form-control" %}
+            {{ form.tz.errors }}
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col">
+            {{ form.freq.label_tag }}
+            {% render_field form.freq class="form-control" %}
+            {{ form.freq.errors }}
+          </div>
+          <div class="form-group col">
+            {{ form.count.label_tag }}
+            {% render_field form.count class="form-control" %}
+            {{ form.count.errors }}
+          </div>
+          <div class="form-group col">
+            {{ form.until.label_tag }}
+            {% render_field form.until class="form-control" %}
+            {{ form.until.errors }}
+          </div>
+        </div>
+        <div class="form-group">
+          {{ form.location.label_tag }}
+          {% render_field form.location class="form-control" %}
+          {{ form.location.errors }}
+        </div>
+        <div class="form-group">
+          {{ form.desc.label_tag }}
+          {% render_field form.desc class="form-control" %}
+          {{ form.desc.errors }}
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          {{ form.guests.label_tag }}
+          {% render_field form.guests class="form-control" %}
+          {{ form.guests.errors }}
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" value="submit" class="btn btn-success">Submit</button>
+  </form>
+{% endblock %}
+
+{% block script %}
+  <script type="text/javascript">
+    const alanBtn = document.getElementsByClassName('alan-btn')[0];
+    const fields = document.getElementsByClassName('form-control');
+
+    function refreshVisualState (active) {
+      setActiveField(active); // see app.js
+      alanBtnInstance.setVisualState({screen: "new-event", activeField: active});
+    }
+
+    refreshVisualState(null);
+
+    for (const elem of fields) {
+      elem.onfocus = function() {
+        refreshVisualState(elem.name);
+      }
+    }
+  </script>
+{% endblock %}
