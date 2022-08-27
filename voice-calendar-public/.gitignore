@@ -1,0 +1,4 @@
+.DS_Store
+client_id/
+myproject/settings/development.py
+development.cpython-310.pyc
